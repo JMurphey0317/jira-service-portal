@@ -1,0 +1,4 @@
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Jira-Users</label>
+    <description>Allows viewing and editing of own Jira tickets in the portal.</description>
+</PermissionSet>

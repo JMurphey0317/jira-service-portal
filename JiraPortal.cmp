@@ -1,0 +1,21 @@
+<aura:component controller="JiraController" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="tickets" type="List" />
+    <aura:attribute name="isAdmin" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:if isTrue="{!v.isAdmin}">
+        <lightning:button label="Configuration" onclick="{!c.openConfig}" />
+    </aura:if>
+
+    <!-- Ticket List -->
+    <aura:iteration items="{!v.tickets}" var="ticket">
+        <div class="slds-box slds-m-bottom_small">
+            <b>Subject:</b> {!ticket.Subject} <br/>
+            <b>Status:</b> {!ticket.Status} <br/>
+            <lightning:button label="Edit" onclick="{!c.editTicket}" data-id="{!ticket.Id}" />
+        </div>
+    </aura:iteration>
+
+    <lightning:button label="Create Ticket" onclick="{!c.openCreateModal}" />
+    <!-- Modal for Create/Edit Ticket would go here -->
+</aura:component>
